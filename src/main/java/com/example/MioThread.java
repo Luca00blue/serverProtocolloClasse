@@ -1,12 +1,12 @@
 package com.example;
 
 import java.io.BufferedReader;
-import java.io.IOException;
+
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class MioThread {
+public class MioThread extends Thread{
 
     Socket mioSocket;
 
@@ -15,8 +15,9 @@ public class MioThread {
         this.mioSocket = socket;
 
     }
-    public void start() throws IOException{
+    public void run() {
        
+      try {
         BufferedReader in = new BufferedReader(new InputStreamReader(mioSocket.getInputStream()));
         PrintWriter out = new PrintWriter(mioSocket.getOutputStream(), true);
         out.println("versione 1.0");
@@ -66,5 +67,9 @@ public class MioThread {
 
         mioSocket.close(); 
     }
+
+      } catch (Exception e) {
+        // TODO: handle exception
+      }
 }
 }
