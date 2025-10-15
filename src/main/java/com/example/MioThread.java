@@ -10,9 +10,9 @@ public class MioThread {
 
     Socket mioSocket;
 
-    public MioThread(Socket mioSocket){
+    public MioThread(Socket socket){
 
-        this.mioSocket = mioSocket;
+        this.mioSocket = socket;
 
     }
     public void start() throws IOException{
